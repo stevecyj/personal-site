@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css"
+import NavigationBar from "../components/NavigationBar.astro"
+import Footer from "../components/Footer.astro"
 ---
 
 <html lang="en">
@@ -15,8 +17,9 @@ import "../styles/global.css"
   </head>
   <body>
     <main>
-      {/* We want the content of each page to go here */}
+      <NavigationBar />
       <slot />
+      <Footer />
     </main>
   </body>
 </html>
