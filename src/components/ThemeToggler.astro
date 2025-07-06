@@ -1,6 +1,11 @@
 <script>
   /** Represent the toggle theme class with a variable */
   const DARK_THEME_CLASS = "dark"
+  /** Represent the local storage key by a variable */
+  const COLOUR_MODE = "COLOUR_MODE"
+  /** Represent the local storage values by variables */
+  const LIGHT_THEME = "LIGHT"
+  const DARK_THEME = "DARK"
 
   /** Wait for DOM to be loaded */
   document.addEventListener("DOMContentLoaded", () => {
@@ -13,8 +18,41 @@
       toggle.addEventListener("click", () => {
         /** toggle the "dark" class on the root element */
         rootEl.classList.toggle(DARK_THEME_CLASS)
+
+        /**Get the current theme mode, i.e., light or dark */
+        const colourMode = rootEl.classList.contains(DARK_THEME_CLASS)
+          ? DARK_THEME
+          : LIGHT_THEME
+
+        /** Save the current theme to local storage   */
+        window.localStorage.setItem(COLOUR_MODE, colourMode)
       })
     }
+
+    const getInitialColourMode = () => {
+      /** Get colour mode from local storage **/
+      const previouslySavedColourMode = window.localStorage.getItem(COLOUR_MODE)
+      if (previouslySavedColourMode) {
+        return previouslySavedColourMode
+      }
+      /** Does the user prefer dark mode, e.g., through an operating system or user agent setting? */
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return DARK_THEME
+      }
+      /** Default to the light theme */
+      return LIGHT_THEME
+    }
+    /**Get initial colour mode */
+    const initialColourMode = getInitialColourMode()
+    const setInitialColourMode = (mode: string) => {
+      if (mode === LIGHT_THEME) {
+        rootEl.classList.remove(DARK_THEME_CLASS)
+      } else {
+        rootEl.classList.add(DARK_THEME_CLASS)
+      }
+    }
+    /** Set the initial colour mode as soon as the script is executed */
+    setInitialColourMode(initialColourMode)
   })
 </script>
 <button id="theme-toggle" aria-label="Theme toggler">
