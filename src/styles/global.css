@@ -1,3 +1,24 @@
+html {
+  --background: white;
+  --grey-200: #222222;
+  --grey-400: #444444;
+  --grey-600: #333333;
+  --grey-900: #111111;
+}
+
+html.dark {
+  --background: black;
+  --grey-200: #eaeaea;
+  --grey-400: #acacac;
+  --grey-600: #ffffff;
+  --grey-900: #fafafa;
+}
+
+body {
+  color: var(--grey-600) !important;
+  background: var(--background) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 h1 {
   font-size: 3rem;
   line-height: 1;
