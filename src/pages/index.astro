@@ -10,21 +10,24 @@ const profilePicture = "https://i.imgur.com/rlhD90r.png"
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <div>
-      <img
-        src={profilePicture}
-        alt="Profile Picture"
-        width="100px"
-        height="100px"
-      />
-      <div>
-        <h1>Hello, I'm John JOJO</h1>
-        <h2>Software Engineer</h2>
-        <p>
-          I'm a software engineer with a passion for building web applications
-          that are both functional and aesthetically pleasing.
-        </p>
+  <body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-8">
+      <div class="card text-center">
+        <img
+          src={profilePicture}
+          alt="Profile Picture"
+          width="100px"
+          height="100px"
+          class="rounded-full mx-auto mb-4"
+        />
+        <div>
+          <h1 class="text-3xl font-bold text-brand-gray-dark mb-2">Hello, I'm John JOJO</h1>
+          <h2 class="text-xl text-brand-blue mb-4">Software Engineer</h2>
+          <p class="text-brand-gray leading-relaxed">
+            I'm a software engineer with a passion for building web applications
+            that are both functional and aesthetically pleasing.
+          </p>
+        </div>
       </div>
     </div>
   </body>
