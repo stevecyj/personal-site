@@ -1,16 +1,18 @@
 import { defineConfig } from "unocss"
-import { presetWebFonts } from '@unocss/preset-web-fonts'
-import { shortcuts } from './src/styles/shortcuts'
+import { presetWebFonts } from "@unocss/preset-web-fonts"
+import presetMini from "@unocss/preset-mini"
+import { shortcuts } from "./src/styles/shortcuts"
 
 export default defineConfig({
   // 使用預設的 preset，包含常用的 utility classes
   presets: [
+    presetMini(),
     presetWebFonts({
-      provider: 'google',
+      provider: "google",
       fonts: {
-        sans: 'Inter',
-      }
-    })
+        sans: "Inter",
+      },
+    }),
   ],
 
   // 自定義規則
