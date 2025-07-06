@@ -1,10 +1,10 @@
-import { defineConfig, presetUno } from "unocss"
+import { defineConfig } from "unocss"
 import { presetWebFonts } from '@unocss/preset-web-fonts'
+import { shortcuts } from './src/styles/shortcuts'
 
 export default defineConfig({
   // 使用預設的 preset，包含常用的 utility classes
   presets: [
-    presetUno(),
     presetWebFonts({
       provider: 'google',
       fonts: {
@@ -17,12 +17,7 @@ export default defineConfig({
   rules: [],
 
   // 自定義快捷鍵
-  shortcuts: {
-    btn: "py-2 px-4 font-semibold rounded-lg shadow-md",
-    "btn-blue": "btn text-white bg-blue-500 hover:bg-blue-700",
-    "btn-red": "btn text-white bg-red-500 hover:bg-red-700",
-    card: "p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg",
-  },
+  shortcuts,
 
   // 主題設定
   theme: {
