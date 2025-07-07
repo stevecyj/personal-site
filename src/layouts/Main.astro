@@ -14,6 +14,33 @@ import Footer from "../components/Footer.astro"
     <meta name="description" content="JOJO's website" />
     {/* Title is hardcoded as Astro, for now. */}
     <title>Astro</title>
+    <script is:inline>
+      // 立即執行主題設定，避免閃爍
+      (function() {
+        const DARK_THEME_CLASS = "dark";
+        const COLOUR_MODE = "COLOUR_MODE";
+        const LIGHT_THEME = "LIGHT";
+        const DARK_THEME = "DARK";
+
+        const getInitialColourMode = () => {
+          const previouslySavedColourMode = localStorage.getItem(COLOUR_MODE);
+          if (previouslySavedColourMode) {
+            return previouslySavedColourMode;
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return DARK_THEME;
+          }
+          return LIGHT_THEME;
+        };
+
+        const initialColourMode = getInitialColourMode();
+        if (initialColourMode === DARK_THEME) {
+          document.documentElement.classList.add(DARK_THEME_CLASS);
+        } else {
+          document.documentElement.classList.remove(DARK_THEME_CLASS);
+        }
+      })();
+    </script>
   </head>
   <body>
     <main>
